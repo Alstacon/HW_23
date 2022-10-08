@@ -21,4 +21,5 @@ def perform_query():
             param=query['value'],
             data=result
         )
+
     return jsonify(result)

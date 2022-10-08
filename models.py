@@ -5,7 +5,8 @@ VALID_CMD = (
     'sort',
     'map',
     'limit',
-    'unique'
+    'unique',
+    'regex'
 )
 
 
@@ -15,7 +16,7 @@ class RequestParams(Schema):
     value = fields.Str(required=True)
 
     @validates_schema
-    def validate_cmd_params(self, values, *args, **kwargs):
+    def validate_cmd_params(self, values: dict, *args, **kwargs) -> dict[str, str]:
         if values['cmd'] not in VALID_CMD:
             raise ValidationError('cmd contains invalid value')
         return values
